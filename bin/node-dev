@@ -3,11 +3,16 @@
 const dev = require('../lib');
 const cli = require('../lib/cli');
 
-const {
-  script,
-  scriptArgs,
-  nodeArgs,
-  opts
-} = cli(process.argv);
 
-dev(script, scriptArgs, nodeArgs, opts);
+try {
+  const {
+    script,
+    scriptArgs,
+    nodeArgs,
+    opts
+  } = cli(process.argv);
+
+  dev(script, scriptArgs, nodeArgs, opts);
+} catch (err) {
+  console.error(err.message);
+}
